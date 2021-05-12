@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
+use App\Models\Rol;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,7 +35,9 @@ class Register extends Component
     {
         $this->validate();
 
-        $user = User::create([
+        $rol = Rol::find(3);
+
+        $user = $rol->users()->create([
             'dni' => $this->dni,
             'nombre' => $this->nombre,
             'apellido' => $this->apellido,

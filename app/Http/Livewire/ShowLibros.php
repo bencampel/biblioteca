@@ -20,7 +20,7 @@ class ShowLibros extends Component
     public function render()
     {
         return view('livewire.show-libros', [
-            'libros' => Libro::where('titulo', 'like', '%'.$this->search.'%')->paginate(4),
+            'libros' => Libro::where('titulo', 'like', '%'.$this->search.'%')->paginate(8),
         ])->layout('layouts.app');
     }
 }

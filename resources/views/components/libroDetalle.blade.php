@@ -1,6 +1,9 @@
-<div class="container px-5 py-12 mx-auto">
+<div class="px-5 py-12 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-        <img alt="libro" class="w-full md:w-1/2 object-cover object-center rounded border border-gray-200" src="{{$libro->getPortada()}}">
+        <div class="w-full md:w-1/2">
+            <img alt="libro" class="object-cover object-center rounded border border-gray-200" src="{{$libro->getPortada()}}">
+        </div>
+        
         <div class="w-full md:w-1/2  md:pl-10 md:py-6 mt-6 md:mt-0">
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
                 {{$libro->titulo}}
@@ -13,13 +16,24 @@
             <p class="leading-relaxed mb-3">
                 {{$libro->resenia}}
             </p>
-            <h1 class="text-gray-900 text-2xl title-font font-medium mb-1">Autores</h1>
 
-            <ul class="flex flex-col leading-relaxed mb-3">
-                @foreach ($libro->autores as $autor)
-                <li>$autor->nombre</li>
-                @endforeach
-            </ul>
+            <div class="flex justify-between items-center mb-3">
+                <div>
+                    <h2 class="text-gray-900 text-2xl title-font font-medium mb-1">Autores</h2>
+                    <ul class="flex flex-col">
+                        @foreach ($libro->autores as $autor)
+                        <li class="font-semibold">{{$autor->nombre}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div>
+                    <ul class="flex flex-col">
+                        <li><span class="pr-1 font-semibold">ISBN:</span>{{$libro->ISBN}}</li>
+                        <li><span class="pr-1 font-semibold">Publicado:</span>{{$libro->publicado->format('Y-m-d')}}</li>
+                    </ul>
+                </div>
+            </div>
+            
 
             <div class="flex items-center">
                 

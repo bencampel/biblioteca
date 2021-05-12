@@ -11,6 +11,10 @@ class Libro extends Model
 
     protected $table = 'libros';
 
+    protected $casts = [
+        'publicado' => 'datetime:Y-m-d',
+    ];
+
     public function getPortada(){
         return '/img/libros/' . $this->portada;
     }

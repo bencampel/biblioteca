@@ -13,6 +13,7 @@
     @livewireStyles
 </head>
 <body class="bg-gray-100">
+    <x-navbar />
     
     <div class="container mt-10 mx-auto">
         @if (session('success'))
