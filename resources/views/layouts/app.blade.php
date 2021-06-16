@@ -13,8 +13,10 @@
     @livewireStyles
 </head>
 <body class="bg-gray-100">
-    <x-navbar />
+    @livewire('header')
     
+    <x-notification />
+
     <div class="container mt-10 mx-auto">
         @if (session('success'))
             <x-alerts.success>
@@ -26,5 +28,6 @@
     </div>
     
     @livewireScripts
+    
 </body>
 </html>

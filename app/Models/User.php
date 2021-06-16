@@ -54,4 +54,15 @@ class User extends Authenticatable
         return $this->hasMany(Prestamo::class);
     }
 
+    public function tienePrestamosPendientes(): bool
+    {
+        foreach($this->prestamos as $prestamo){
+            if($prestamo->estadoPrestamo() == 'pendiente'){
+                return True;
+            }
+        }
+
+        return False;
+    }
+
 }

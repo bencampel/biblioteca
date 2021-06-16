@@ -49,6 +49,7 @@
 
                 @if ($libro->unidades > 0)
                 <button
+                    wire:click="addToCart({{ $libro->id }})"
                     class="flex ml-auto text-white bg-blue-700 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
                     Reservar
                 </button>

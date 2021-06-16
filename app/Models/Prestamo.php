@@ -9,6 +9,9 @@ class Prestamo extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'fecha_devolucion' => 'datetime:Y-m-d',
+    ];
 
     public function user()
     {
@@ -18,5 +21,31 @@ class Prestamo extends Model
     public function detalles()
     {
         return $this->hasMany(PrestamoDetalle::class);
+    }
+
+    public function estadoPrestamo(){
+        if (isset($this->devuelto) and !isset($this->entregado)){
+
+            return 'cancelado';
+
+        }
+        
+        if(isset($this->devuelto)){
+
+            return 'finalizado';
+        }
+        
+        if(isset($this->entregado)){
+
+            return 'entregado';
+
+        }
+        
+        return 'pendiente';
+    }
+
+    public function puedeCancelar(){
+        $estado = $this->estadoPrestamo();
+        return $estado == 'pendiente';
     }
 }
